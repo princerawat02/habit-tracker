@@ -1,0 +1,27 @@
+# Node.js
+node_modules/
+.env
+
+# Logs
+logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Build output
+/dist
+/build
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Misc
+*.swp
+*.swo
+
+# VS Code
+.vscode/
+
+# Coverage
+coverage/
