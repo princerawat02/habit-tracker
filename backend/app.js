@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
 import express from "express";
 import connectDB from "./config/db.js";
-// import cors from "cors";
+import cors from "cors";
 import authRoutes from "./routes/auth.js";
 import habitsRoutes from "./routes/habits.js";
 import usersRoutes from "./routes/users.js";
@@ -12,12 +12,12 @@ dotenv.config();
 const app = express();
 connectDB();
 
-// app.use(
-//   cors({
-//     origin: process.env.CLIENT_URL || "http://localhost:5173",
-//     credentials: true,
-//   })
-// );
+app.use(
+  cors({
+    origin: "https://habit-tracker-1-aux5.onrender.com",
+    credentials: true,
+  })
+);
 
 app.use(express.json());
 
