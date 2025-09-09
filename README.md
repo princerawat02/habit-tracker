@@ -1,84 +1,106 @@
 # Habit Tracker
 
-A full-stack habit tracking app with daily check-ins, friends feed, leaderboard, and authentication.
+## Project Overview
+
+Habit Tracker is a full-stack web application designed to help users build and maintain positive habits. It features user authentication, habit creation, daily check-ins, a social feed, and a leaderboard to encourage friendly competition.
 
 ## Features
 
-- User authentication (signup/login)
-- Create, edit, delete habits
-- Daily/weekly check-ins
-- Friends feed
-- Leaderboard (rank users by streaks)
-- Search and follow users
+- User Signup & Login
+- Create, Edit, and Delete Habits
+- Daily Habit Check-ins
+- Social Feed to view friends' activities
+- Leaderboard to track top performers
+- Search for other users
 
-## Setup Instructions
+## Technologies Used
 
-### 1. Clone the repository
+- **Frontend:** React (Vite)
+- **Backend:** Node.js, Express
+- **Database:** (see backend/config/db.js for details)
 
-```
-git clone <your-repo-url>
+---
+
+## Getting Started
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/princerawat02/habit-tracker.git
 cd habit-tracker
 ```
 
-### 2. Install dependencies
+### 2. Install Dependencies
 
-```
+#### Backend
+
+```bash
 cd backend
 pnpm install
+```
+
+#### Frontend
+
+```bash
 cd ../frontend
 pnpm install
 ```
 
 ### 3. Environment Variables
 
-Create a `.env` file in the `backend` folder:
+- Copy `.env.example` in the `backend` folder and rename it to `.env`.
+- Update the values as needed (e.g., database connection string, JWT secret).
 
-```
-MONGO_URI=<your-mongodb-uri>
-JWT_SECRET=<your-jwt-secret>
-```
+### 4. Seed the Database (Optional)
 
-Create a `.env` file in the `frontend` folder for API configuration:
+If you want sample data:
 
-```
-VITE_API_BASE_URL=https://your-production-api.com/api
-```
-
-### 4. Start the backend
-
-```
+```bash
 cd backend
-pnpm dev
+node seed.js
 ```
 
-### 5. Start the frontend
+### 5. Start the Backend Server
 
+```bash
+cd backend
+pnpm start
 ```
+
+### 6. Start the Frontend
+
+```bash
 cd frontend
-pnpm dev
+pnpm run dev
 ```
 
-### 6. Access the app
+---
 
-Open [http://localhost:5173](http://localhost:5173) in your browser.
+## Accessing the App
 
-### 7. Deployed URL
+- Frontend: [http://localhost:5173](http://localhost:5173)
+- Backend API: [http://localhost:3000](http://localhost:3000) (default)
 
-If deployed, access the app at:
+---
 
-```
-<your-deployed-url>
-```
+## User Flow
 
-## Configuration
+1. **Signup/Login:** Create an account or log in.
+2. **Create Habit:** Add new habits you want to track.
+3. **Check-in:** Mark habits as completed each day.
+4. **Feed:** View your and others' habit activity.
+5. **Leaderboard:** See top users based on habit streaks.
+6. **Search Users:** Find and connect with other users.
 
-- Change MongoDB URI and JWT secret in `.env` as needed.
+---
 
-## Tech Stack
+## Notes
 
-- Backend: Node.js, Express, MongoDB, Mongoose
-- Frontend: React, Vite, Axios, React Router, React Toastify
+- Make sure to update `.env.example` to `.env` and fill in all required environment variables for the backend to work.
+- If you encounter issues, check your database connection and environment variables.
 
-## License
+---
 
-MIT
+## Contact
+
+For any issues, contact [princerawat02](https://github.com/princerawat02).
