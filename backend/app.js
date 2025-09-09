@@ -12,9 +12,14 @@ dotenv.config();
 const app = express();
 connectDB();
 
+const allowedOrigins = [
+  "https://habit-tracker-1-aux5.onrender.com",
+  "http://localhost:5173",
+];
+
 app.use(
   cors({
-    origin: "https://habit-tracker-1-aux5.onrender.com",
+    origin: allowedOrigins,
     credentials: true,
   })
 );

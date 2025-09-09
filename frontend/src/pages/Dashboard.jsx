@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axiosClient from "../axiosClient";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";

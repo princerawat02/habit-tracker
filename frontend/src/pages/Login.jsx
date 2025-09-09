@@ -20,8 +20,8 @@ export default function Login({ setToken }) {
       });
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("username", res.data.user.username);
-      setToken(res.data.token); // Update token in App to trigger re-render
-      navigate("/dashboard"); // Navigate to dashboard after successful login
+      setToken(res.data.token);
+      navigate("/dashboard");
     } catch (err) {
       setError(err.response?.data?.message || "Login failed");
     } finally {

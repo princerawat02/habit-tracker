@@ -59,7 +59,6 @@ export const checkInHabit = async (req, res) => {
     start = new Date(now.getFullYear(), now.getMonth(), now.getDate());
     end = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
   } else {
-    // weekly: get start of week (Sunday)
     const day = now.getDay();
     start = new Date(now.getFullYear(), now.getMonth(), now.getDate() - day);
     end = new Date(now.getFullYear(), now.getMonth(), now.getDate() - day + 7);
@@ -74,11 +73,30 @@ export const checkInHabit = async (req, res) => {
       .status(400)
       .json({ message: "Already checked in for this period" });
   }
-  // Create check-in
-  const checkIn = new CheckIn({ habit: habit._id, user: req.user._id });
+  // Create check-in with current date
+  const checkIn = new CheckIn({
+    habit: habit._id,
+    user: req.user._id,
+    date: now,
+  });
   await checkIn.save();
-  // Update streak
-  habit.streak += 1;
+  // Update streak with reset logic
+  const lastCheckIn = await CheckIn.findOne({
+    habit: habit._id,
+    user: req.user._id,
+  }).sort({ date: -1 });
+  let newStreak = 1;
+  if (lastCheckIn) {
+    const lastDate = new Date(lastCheckIn.date);
+    const diffTime = now - lastDate;
+    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+    if (habit.frequency === "daily" && diffDays <= 1) {
+      newStreak = habit.streak + 1;
+    } else if (habit.frequency === "weekly" && diffDays <= 7) {
+      newStreak = habit.streak + 1;
+    }
+  }
+  habit.streak = newStreak;
   await habit.save();
   res.json({ message: "Habit checked in", streak: habit.streak });
 };

@@ -46,12 +46,5 @@ const habits = await Habit.insertMany([
   },
 ]);
 
-// Create sample check-ins
-await CheckIn.insertMany([
-  { habit: habits[0]._id, user: users[0]._id, date: new Date() },
-  { habit: habits[1]._id, user: users[0]._id, date: new Date() },
-  { habit: habits[2]._id, user: users[1]._id, date: new Date() },
-]);
-
 console.log("Database seeded!");
 mongoose.connection.close();
